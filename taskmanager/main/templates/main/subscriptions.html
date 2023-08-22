@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Друзья
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'css/Главная.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'js/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'js/nicepage.js' %}" defer=""></script>
+
+  <form method="post">
+      {% csrf_token %}
+   <p><input type="search" name="search" placeholder="Поиск по сайту">
+   <input type="submit" value="Найти"></p>
+  </form>
+
+    {% for i in context %}
+    <section class="u-clearfix u-section-1" id="sec-f63a">
+      <div class="container px-4 py-5" id="hanging-icons">
+        <img class="u-image u-image-circle u-image-1" src="{{ i.image.url }}" alt="" data-image-width="400" data-image-height="265">
+          <a href="/profile/{{ i.email }}" class="u-text u-text-default u-text-1" style="color: black">{{ i.name }}</a>
+        <a href="/subscriptions" class="u-active-none u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">Подписки</a>
+        <a href="/create_note" class="u-active-none u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-2">Создать запись</a>
+      </div></section>
+    {% endfor %}
+
+{% endblock %}

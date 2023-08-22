@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Проект
+{% endblock %}
+
+{% block content %}
+
+    {% load static %}
+
+    <style type="text/css">
+    img
+    {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  20px 20px 60px #bebebe,
+                 -20px -20px 20px #ffffff;
+                 }
+    </style>
+
+    <section class="pt-4 pt-md-11">
+          <div class="container">
+            <div class="row align-items-center">
+    {% for element in task %}
+          <div class="col-12 col-md-5 col-lg-6 order-md-2">
+            <!-- Image -->
+            <img src="{{ element.image.url }}" class="img" alt="УПС!" data-aos="fade-up" data-aos-delay="100" width="500px" height="500px" object-fit="cover" >
+          </div>
+
+          <div class="col-12 col-md-7 col-lg-6 order-md-1 aos-init aos-animate" data-aos="fade-up">
+            <!-- Heading -->
+            <h1 class="display-3 text-center text-md-start">
+              <span class="text-primary">{{ element.title }}</span>. <br>
+            </h1>
+            <!-- Text -->
+            <p class="lead text-center text-md-start text-muted mb-6 mb-lg-8">
+              {{ element.description }}
+            </p>
+            <!-- Buttons -->
+            <div class="text-center text-md-start">
+              <a href="overview.html" class="btn btn-primary shadow lift me-1">
+                Подать заявку
+              </a>
+              <a href="docs/index.html" class="btn btn-primary-soft lift">
+                Контакты
+              </a>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+{% endfor %}
+{% endblock %}

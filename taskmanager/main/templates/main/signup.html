@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+
+    .form{
+        color:red;
+    }
+
+    .myfield{
+            border:1px solid #ccc;
+            border-radius:5px;
+            height:25px;
+            width:200px;
+            margin: 10px 10px 10px 0;
+        }
+
+    .btn {
+         width: 130px;
+         height: 40px;
+         font-size: 1.1em;
+         cursor: pointer;
+         background-color: #171717;
+         color: #fff;
+         border: none;
+         border-radius: 5px;
+         transition: all .4s;
+         margin: 10px;
+        }
+
+    .btn:hover {
+         border-radius: 5px;
+         transform: translateY(-10px);
+         box-shadow: 0 7px 0 -2px #f85959,
+          0 15px 0 -4px #39a2db,
+          0 16px 10px -3px #39a2db;
+        }
+
+    .btn:active {
+         transition: all 0.2s;
+         transform: translateY(-5px);
+         box-shadow: 0 2px 0 -2px #f85959,
+          0 8px 0 -4px #39a2db,
+          0 12px 10px -3px #39a2db;
+        }
+    </style>
+
+    <h1>Вход</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}<br>
+        <button type="submit" class="btn">Войти</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
